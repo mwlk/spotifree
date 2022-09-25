@@ -1,0 +1,7 @@
+{
+  "name": "spotifree",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
