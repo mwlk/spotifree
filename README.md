@@ -1,3 +1,6 @@
 # spotifree
 
-ionic 6 and angular proyect
+spotify clon
+ionic 6 with angular project
+
+from Platzi course
