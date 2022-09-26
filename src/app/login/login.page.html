@@ -1,0 +1,37 @@
+<ion-content>
+  <figure class="ion-text-center ion-padding">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/3/32/Platzi.jpg"
+      alt=""
+    />
+  </figure>
+  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMsg.email">
+        <div
+          *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty ||loginForm.get('email').touched)"
+        >
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMsg.password">
+        <div
+          *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty ||loginForm.get('password').touched)"
+        >
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+  </form>
+</ion-content>
