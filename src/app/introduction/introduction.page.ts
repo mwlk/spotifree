@@ -46,6 +46,6 @@ export class IntroductionPage implements OnInit {
 
   finish() {
     this._storage.set('isIntroShowed', true);
-    this._router.navigateByUrl('/home');
+    this._router.navigateByUrl('/menu');
   }
 }

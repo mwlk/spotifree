@@ -61,6 +61,18 @@ export class RegisterPage implements OnInit {
   }
 
   register(credentials) {
-    console.log(credentials);
+    // this.registerForm.controls.apellido.setErrors({ incorrect: true });
+    this._authSvc
+      .registerUser(credentials)
+      .then(() => {
+        this.goToLogin();
+      })
+      .catch((err) => {
+        alert(`error al registrar`);
+      });
+  }
+
+  goToLogin() {
+    this._router.navigate(['/login'], { skipLocationChange: true });
   }
 }

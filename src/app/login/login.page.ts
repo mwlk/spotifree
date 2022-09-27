@@ -64,7 +64,7 @@ export class LoginPage implements OnInit {
       .then((res) => {
         this.errorMessage = '';
         this._storage.set('isUserLoggedIn', true);
-        this._router.navigate(['/home']);
+        this._router.navigate(['/menu']);
       })
       .catch((err) => {
         this._storage.set('isUserLoggedIn', false);

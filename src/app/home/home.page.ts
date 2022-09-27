@@ -7,5 +7,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class HomePage {
-  constructor() {}
+  constructor() {
+    console.log(`home`);
+  }
 }
