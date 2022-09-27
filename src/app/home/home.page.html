@@ -1,3 +1,24 @@
-<ion-content [fullscreen]="true">
-  <h1>Home</h1>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h1 class="ion-text-center">Listado de Album</h1>
+  <swiper [config]="slideOpts" *ngIf="albums.length">
+    <<ng-template swiperSlide *ngFor="let album of albums">
+      <div>
+        <ion-avatar>
+          <img [src]="album.images[0].url" alt="" />
+          <span>{{album.name}}</span>
+        </ion-avatar>
+      </div>
+    </ng-template>
+  </swiper>
+  <h1 class="ion-text-center">Listado de Canciones</h1>
+  <swiper [config]="slideOpts" *ngIf="songs.length">
+    <<ng-template swiperSlide *ngFor="let song of songs">
+      <div>
+        <ion-avatar>
+          <img [src]="song.images[0].url" alt="" />
+          <span>{{song.name}}</span>
+        </ion-avatar>
+      </div>
+    </ng-template>
+  </swiper>
 </ion-content>

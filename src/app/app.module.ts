@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -15,6 +16,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     IonicStorageModule.forRoot(),
     SwiperModule,
   ],
