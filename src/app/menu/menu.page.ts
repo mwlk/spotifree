@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,11 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-  constructor(private menu: MenuController, private _router: Router) {}
+  constructor(
+    private menu: MenuController,
+    private _router: Router,
+    private _authSvc: AuthService
+  ) {}
 
   ngOnInit() {
     console.log(`menu`);
@@ -22,5 +27,10 @@ export class MenuPage implements OnInit {
   goHome() {
     this._router.navigateByUrl('/menu/home');
     this.menu.close();
+  }
+
+  logout() {
+    this._authSvc.logout();
+    this._router.navigateByUrl('/login');
   }
 }

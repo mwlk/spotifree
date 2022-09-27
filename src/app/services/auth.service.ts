@@ -32,4 +32,8 @@ export class AuthService {
       this._storage.set('user', null);
     });
   }
+
+  logout() {
+    this._storage.clear();
+  }
 }
