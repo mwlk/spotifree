@@ -33,5 +33,20 @@
         </div>
       </ng-container>
     </div>
+    <div class="ion-text-center">{{errorMessage}}</div>
+
+    <ion-button
+      expand="full"
+      color="success"
+      shape="round"
+      [disabled]="loginForm.invalid"
+      type="submit"
+      >Login</ion-button
+    >
   </form>
 </ion-content>
+<ion-footer class="ion-text-center">
+  <ion-button (click)="goToRegister()" expand="full" fill="outline" shape="round" color="success"
+    >Click para registrar</ion-button
+  >
+</ion-footer>
