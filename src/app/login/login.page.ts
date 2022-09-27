@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -5,6 +6,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +30,16 @@ export class LoginPage implements OnInit {
       },
     ],
   };
-  constructor(private fb: FormBuilder) {}
+
+  errorMessage = '';
+  constructor(
+    private fb: FormBuilder,
+    private _authSvc: AuthService,
+    private _router: Router,
+    private _storage: Storage
+  ) {
+    this._storage.create();
+  }
 
   createFormGroup() {
     return this.fb.group({
@@ -45,5 +58,21 @@ export class LoginPage implements OnInit {
     this.loginForm = this.createFormGroup();
   }
 
-  login(data) {}
+  login(data) {
+    this._authSvc
+      .loginUser(data)
+      .then((res) => {
+        this.errorMessage = '';
+        this._storage.set('isUserLoggedIn', true);
+        this._router.navigate(['/home']);
+      })
+      .catch((err) => {
+        this._storage.set('isUserLoggedIn', false);
+        this.errorMessage = err;
+      });
+  }
+
+  goToRegister() {
+    this._router.navigateByUrl('/register');
+  }
 }
