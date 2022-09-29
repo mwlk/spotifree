@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{artist + 'Top Songs'}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="selectSong('')">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <swiper [config]="slideOpts" *ngIf="songs.length">
+    <<ng-template swiperSlide *ngFor="let song of songs; index as i">
+      <div>
+        <ion-avatar (click)="selectSong(song)"> {{i+1}} </ion-avatar>
+        <ion-label>
+          <h2>{{song.name}}</h2>
+          <span>{{song.popularity}}</span>
+        </ion-label>
+      </div>
+    </ng-template>
+  </swiper>
+</ion-content>

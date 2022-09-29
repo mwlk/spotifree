@@ -1,12 +1,27 @@
 <ion-content [fullscreen]="true" class="ion-padding">
+  <h1 class="ion-text-center">Listado de Artistas</h1>
+  <swiper [config]="slideOpts" *ngIf="artists.length">
+    <<ng-template swiperSlide *ngFor="let artist of artists">
+      <div>
+        <ion-avatar (click)="showSongs(artist)">
+          <img [src]="artist.images[0].url" alt="" />
+        </ion-avatar>
+        <ion-label>
+          <span>{{artist.name}}</span>
+        </ion-label>
+      </div>
+    </ng-template>
+  </swiper>
   <h1 class="ion-text-center">Listado de Album</h1>
   <swiper [config]="slideOpts" *ngIf="albums.length">
     <<ng-template swiperSlide *ngFor="let album of albums">
       <div>
-        <ion-avatar>
+        <ion-avatar class="square-avatar">
           <img [src]="album.images[0].url" alt="" />
-          <span>{{album.name}}</span>
         </ion-avatar>
+        <ion-label>
+          <span>{{album.name}}</span>
+        </ion-label>
       </div>
     </ng-template>
   </swiper>
@@ -14,11 +29,19 @@
   <swiper [config]="slideOpts" *ngIf="songs.length">
     <<ng-template swiperSlide *ngFor="let song of songs">
       <div>
-        <ion-avatar>
+        <ion-avatar class="square-avatar">
           <img [src]="song.images[0].url" alt="" />
-          <span>{{song.name}}</span>
         </ion-avatar>
+        <ion-label><span>{{song.name}}</span></ion-label>
       </div>
     </ng-template>
   </swiper>
 </ion-content>
+<ion-footer>
+  <ion-text class="ion-text-center" color="danger" *ngIf="song.name === ''">
+    <h2>Canción Seleccionada</h2>
+  </ion-text>
+  <ion-text class="ion-text-center" color="primary" *ngIf="song.name !== ''">
+    <h2>{{song.name}}</h2>
+  </ion-text>
+</ion-footer>

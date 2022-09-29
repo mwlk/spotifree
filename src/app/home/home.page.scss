@@ -1,12 +1,19 @@
-@import "~swiper/scss/pagination";
-
-.swiper-wrapper{
-    height: 250px;
+.swiper-wrapper {
+  height: 250px;
 }
-ion-avatar{
-    height: 6rem;
+ion-avatar {
+  height: 120px;
+  width: 90%;
+}
+ion-avatar img {
+  height: 90px;
+  width: 90px;
 }
 
-ion-avatar span{
-    font-size: small;
+ion-avatar span {
+  font-size: small;
+}
+
+.square-avatar {
+  --border-radius: 0;
 }
