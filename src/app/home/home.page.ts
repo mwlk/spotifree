@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SwiperOptions } from 'swiper';
@@ -31,8 +32,11 @@ export class HomePage implements ViewDidEnter {
   tracks: any[] = [];
   song = {
     playing: false,
-    name: ''
+    name: '',
+    preview_url: '',
   };
+  currentSong: HTMLAudioElement;
+  currentTimeSong: number;
   constructor(
     private _musicSvc: MusicService,
     private _artistSvc: ArtistsService,
@@ -67,5 +71,39 @@ export class HomePage implements ViewDidEnter {
 
       return await modal.present();
     });
+  }
+  play() {
+    this.currentSong = new Audio(this.song.preview_url);
+    this.currentSong.play();
+    this.currentSong.addEventListener('timeupdate', () => {
+      this.currentTimeSong =
+        this.currentSong.currentTime / this.currentSong.duration;
+    });
+    this.song.playing = true;
+  }
+
+  pause() {
+    this.currentSong.pause();
+    this.song.playing = false;
+  }
+
+  parseTime(time) {
+    if (time) {
+      const partTime = parseInt(time.toString().split('.')[0], 10);
+      let min = Math.floor(partTime / 60).toString();
+
+      if (min.length === 1) {
+        min = '0' + min;
+      }
+
+      let second = (partTime % 60).toString();
+      if (second.length === 1) {
+        second = '0' + second;
+      }
+
+      return min + ':' + second;
+    } else {
+      return '00.00';
+    }
   }
 }
