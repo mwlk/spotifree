@@ -1,0 +1,16 @@
+<ion-content class="ion-padding">
+  <ion-avatar (click)="takePhoto()">
+    <!-- <img class="ion-padding" [src]="userImage" alt="imagen" /> -->
+    <ion-button color="success">
+      <ion-icon color="light" name="camera"></ion-icon>
+    </ion-button>
+  </ion-avatar>
+
+  <ion-grid *ngIf="photo">
+    <ion-row>
+      <ion-col size="6">
+        <ion-img [src]="photo.webviewPath"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

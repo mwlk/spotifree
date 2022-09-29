@@ -29,6 +29,11 @@ export class MenuPage implements OnInit {
     this.menu.close();
   }
 
+  goSettings() {
+    this._router.navigateByUrl('/menu/settings');
+    this.menu.close();
+  }
+
   logout() {
     this._authSvc.logout();
     this._router.navigateByUrl('/login');
