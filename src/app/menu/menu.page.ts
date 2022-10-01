@@ -34,6 +34,11 @@ export class MenuPage implements OnInit {
     this.menu.close();
   }
 
+  goSport() {
+    this._router.navigateByUrl('/menu/sports');
+    this.menu.close();
+  }
+
   logout() {
     this._authSvc.logout();
     this._router.navigateByUrl('/login');

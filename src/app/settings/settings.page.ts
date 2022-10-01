@@ -13,11 +13,18 @@ import { PhotoService } from '../services/photo.service';
 export class SettingsPage implements OnInit {
   userImage = 'assets/icon/favicon.png';
   photo: UserPhoto;
+  user: any;
 
   constructor(public _photoSvc: PhotoService, private _storage: Storage) {
     this._storage.create();
   }
   ngOnInit(): void {
+    if (this._storage.get('user')) {
+      this._storage.get('user').then((res) => {
+        this.user = res;
+      });
+    }
+
     if (this._storage.get('profile')) {
       this._storage.get('profile').then((res) => {
         this.photo = res;

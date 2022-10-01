@@ -1,16 +1,27 @@
 <ion-content class="ion-padding">
-  <ion-avatar (click)="takePhoto()">
-    <!-- <img class="ion-padding" [src]="userImage" alt="imagen" /> -->
-    <ion-button color="success">
-      <ion-icon color="light" name="camera"></ion-icon>
-    </ion-button>
-  </ion-avatar>
+  <ion-button color="success" (click)="takePhoto()">
+    <ion-icon color="light" name="camera"></ion-icon>
+  </ion-button>
 
-  <ion-grid *ngIf="photo">
-    <ion-row>
-      <ion-col size="6">
-        <ion-img [src]="photo.webviewPath"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div class="ion-padding success-bg">
+    <ion-avatar *ngIf="photo" >
+      <ion-img [src]="photo.webviewPath"></ion-img>
+    </ion-avatar>
+    <ng-container *ngIf="user">
+      <h1 class="ion-text-uppercase">{{user.nombre +" "+ user.apellido}}</h1>
+      <h2>{{user.email}}</h2>
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-text-center row-header">
+          <ion-col>140</ion-col>
+          <ion-col>2k</ion-col>
+          <ion-col>500</ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-text-center">
+          <ion-col>Artistas</ion-col>
+          <ion-col>Seguidores</ion-col>
+          <ion-col>Canciones</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+  </div>
 </ion-content>

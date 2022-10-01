@@ -1,0 +1,22 @@
+<ion-content>
+  <google-map
+    *ngIf="currentCenter"
+    height="250px"
+    width="100%"
+    [zoom]="defaultZoom"
+    [center]="center"
+    [options]="options"
+  >
+    <map-marker [position]="center" icon="assets/icon/bicycle.png">
+      <map-polyline
+        *ngIf="coordinates"
+        strokerColor="red"
+        [path]="coordinates"
+      ></map-polyline>
+    </map-marker>
+  </google-map>
+
+  <ng-container class="ion-padding">
+    <ion-searchbar></ion-searchbar>
+  </ng-container>
+</ion-content>

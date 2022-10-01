@@ -87,7 +87,7 @@ export class HomePage implements ViewDidEnter {
     this.song.playing = false;
   }
 
-  parseTime(time) {
+  parseTime(time: number) {
     if (time) {
       const partTime = parseInt(time.toString().split('.')[0], 10);
       let min = Math.floor(partTime / 60).toString();
